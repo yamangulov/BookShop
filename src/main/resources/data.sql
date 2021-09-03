@@ -23,3 +23,8 @@ insert into books (author, title, priceOld, price) values ('Lindsay Coutthart', 
 insert into books (author, title, priceOld, price) values ('Helyn Schneidar', 'utilize magnetic supply-chains', '$279.70', '$77.86');
 insert into books (author, title, priceOld, price) values ('Bette-ann Askem', 'e-enable dot-com supply-chains', '$297.83', '$110.15');
 insert into books (author, title, priceOld, price) values ('Dom Robuchon', 'facilitate efficient eyeballs', '$232.30', '$131.48');
+
+insert into authors (author) select distinct author from books;
+-- изменение схемы именно здесь, а не в файле data.sql для того, чтобы оно всегда выполнялось после
+-- первоначального заполненения БД H2 в оперативной памяти сразу после запуска приложения
+ALTER TABLE books ADD CONSTRAINT fk_books_authors FOREIGN KEY (author) REFERENCES authors (author) ON DELETE CASCADE ON UPDATE CASCADE;
