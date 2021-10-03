@@ -1,18 +1,21 @@
 
 <!--END-->
-<!--END--><!DOCTYPE html><!--[if IE 7]>
-<html class="ie7" lang="ru">
+<!--END--><!DOCTYPE html>
+<!--[if IE 7]>
+<html class="ie7" lang="ru" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <![endif]-->
 <!--[if IE 8]>
-<html class="ie8" lang="ru">
+<html class="ie8" lang="ru" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <![endif]-->
 <!--[if IE 9]>
-<html class="ie9" lang="ru">
+<html class="ie9" lang="ru" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <![endif]-->
-<!--[if gt IE 9]><!--> <html lang="ru"> <!--<![endif]-->
+<!--[if gt IE 9]><!-->
+<html lang="ru" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<!--<![endif]-->
 <head>
-  <title>Тут название страницы написать</title>
-  <meta name="description" content="Описание страницы">
+  <title>Bookshop contacts</title>
+  <meta name="description" content="Bookshop contacts">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
   <!--meta( http-equiv="cache-control" content="no-cache")-->
@@ -43,25 +46,26 @@
   <div class="Middle">
     <div class="Middle-top">
       <div class="wrap">
-        <h1 class="Middle-title">Контакты
+        <h1 class="Middle-title" th:text="#{footer.contacts}">Контакты
         </h1>
       </div>
     </div>
     <div class="wrap">
       <main class="Middle-main">
         <ul class="breadcrumbs">
-          <li class="breadcrumbs-item"><a href="/index.html">Главная</a>
+          <li class="breadcrumbs-item"><a href="/index.html" th:text="#{breadcrumbs.main}">Главная</a>
           </li>
-          <li class="breadcrumbs-item breadcrumbs-item_current"><span>Контакты</span>
+          <li class="breadcrumbs-item breadcrumbs-item_current">
+            <span th:text="#{footer.contacts}">Контакты</span>
           </li>
         </ul>
         <div class="Contacts">
           <div class="row">
             <div class="row-block">
-              <h2>Контакты
+              <h2 th:text="#{footer.contacts}">Контакты
               </h2>
               <div class="Contacts-prop">
-                <strong class="Contacts-propTitle">Телефон:
+                <strong class="Contacts-propTitle" th:text="#{phone}">Телефон:
                 </strong><span class="Contacts-propContent">8 (800) 484-48-48</span>
               </div>
               <div class="Contacts-prop">
@@ -69,29 +73,37 @@
                 </strong><span class="Contacts-propContent">test@test.ru</span>
               </div>
               <div class="Contacts-prop">
-                <strong class="Contacts-propTitle">Телеграм-бот:
+                <strong class="Contacts-propTitle" th:text="#{telegram}">Телеграм-бот:
                 </strong><span class="Contacts-propContent">@testBookShop</span>
               </div>
             </div>
             <div class="row-block">
               <div class="Contacts-form">
-                <h2>Напишите нам:
+                <h2 th:text="#{email.ask}">Напишите нам:
                 </h2>
                 <form class="form" action="#" method="post">
                   <div class="form-group">
-                    <input class="form-input" id="name" name="name" type="text" placeholder="Введите Имя" data-validate="require"/>
+                    <input class="form-input" id="name" name="name" type="text" placeholder="Введите Имя"
+                           th:placeholder="#{email.name}" data-validate="require"/>
                   </div>
                   <div class="form-group">
-                    <input class="form-input form-input_mail" id="mail" name="mail" type="text" placeholder="Введите e-mail" data-validate="mail require"/>
+                    <input class="form-input form-input_mail" id="mail" name="mail" type="text"
+                           placeholder="Введите e-mail" th:placeholder="#{email.email}" data-validate="mail require"/>
                   </div>
                   <div class="form-group">
-                    <input class="form-input" id="topic" name="topic" type="text" placeholder="Введите тему" data-validate="require"/>
+                    <input class="form-input" id="topic" name="topic" type="text" placeholder="Введите тему"
+                           th:placeholder="#{email.topic}" data-validate="require"/>
                   </div>
                   <div class="form-group">
-                    <textarea class="form-textarea Contacts-message" name="message" id="message" placeholder="Введите сообщение" data-validate="require"></textarea>
+                    <textarea class="form-textarea Contacts-message" name="message" id="message"
+                              placeholder="Введите сообщение" th:placeholder="#{email.message}"
+                              data-validate="require">
+                    </textarea>
                   </div>
                   <div class="form-group">
-                    <button class="btn btn_primary form-btn" type="submit" name="sendMessage" id="sendMessage">Отправить
+                    <button class="btn btn_primary form-btn" type="submit" name="sendMessage"
+                            id="sendMessage" th:text="#{email.send}">
+                      Отправить
                     </button>
                   </div>
                 </form>
@@ -104,4 +116,5 @@
   </div>
   <footer th:replace="~{fragments/common_footer_fragment :: footerFragment}"></footer>
   <script src="/assets/plg/jQuery/jquery-3.5.1.min.js"></script>
+  <script defer src="/assets/js/custom.js?v=64223516"></script>
 </body></html>
