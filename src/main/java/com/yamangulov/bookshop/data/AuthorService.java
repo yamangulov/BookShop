@@ -24,7 +24,7 @@ public class AuthorService {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public List<Author> getAuthors() {
+    private List<Author> getAuthors() {
         List<Author> authors =
                 jdbcTemplate.query("SELECT * from authors", (ResultSet rs, int rowNub) -> {
                     Author author = new Author();
