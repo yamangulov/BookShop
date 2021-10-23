@@ -1,9 +1,8 @@
 package com.yamangulov.bookshop.controller;
 
-import com.yamangulov.bookshop.data.Book;
-import com.yamangulov.bookshop.data.BookService;
+import com.yamangulov.bookshop.data.book.Book;
+import com.yamangulov.bookshop.data.book.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;

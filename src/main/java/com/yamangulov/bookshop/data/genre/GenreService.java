@@ -1,4 +1,4 @@
-package com.yamangulov.bookshop.data;
+package com.yamangulov.bookshop.data.genre;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -21,12 +21,13 @@ public class GenreService {
     }
 
 
-    public List<Genre> getLevelZeroGenres() {
+
+    public List<GenreEntity> getLevelZeroGenres() {
         return null;
     }
 
     //будет использовано в заданиях для следующих модулей
-    public List<Genre> getLevelNGenresByParent(Genre genre, int n) {
+    public List<GenreEntity> getLevelNGenresByParent(GenreEntity genre, int n) {
         return null;
     }
 }

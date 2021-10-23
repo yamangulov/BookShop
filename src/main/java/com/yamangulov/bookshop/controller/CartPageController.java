@@ -1,6 +1,6 @@
 package com.yamangulov.bookshop.controller;
 
-import com.yamangulov.bookshop.data.UserService;
+import com.yamangulov.bookshop.data.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

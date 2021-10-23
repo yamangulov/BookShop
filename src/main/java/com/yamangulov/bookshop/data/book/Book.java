@@ -1,15 +1,30 @@
-package com.yamangulov.bookshop.data;
+package com.yamangulov.bookshop.data.book;
+
+import com.yamangulov.bookshop.data.author.Author;
+
+import javax.persistence.*;
 
 /**
  * Created by Andrey.Yamangulov
  * Date: 28.08.2021
  * Time: 15:49
  */
+@Entity
+@Table(name = "books")
 public class Book {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String author;
+
+    @ManyToOne
+    @JoinColumn(name = "author_id", referencedColumnName = "id")
+    private Author author;
+
     private String title;
+
+    @Column(name = "price_old")
     private String priceOld;
+
     private String price;
 
     public Integer getId() {
@@ -20,11 +35,11 @@ public class Book {
         this.id = id;
     }
 
-    public String getAuthor() {
+    public Author getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor(Author author) {
         this.author = author;
     }
 
@@ -50,16 +65,5 @@ public class Book {
 
     public void setPrice(String price) {
         this.price = price;
-    }
-
-    @Override
-    public String toString() {
-        return "Book{" +
-                "id=" + id +
-                ", author='" + author + '\'' +
-                ", title='" + title + '\'' +
-                ", priceOld='" + priceOld + '\'' +
-                ", price='" + price + '\'' +
-                '}';
     }
 }

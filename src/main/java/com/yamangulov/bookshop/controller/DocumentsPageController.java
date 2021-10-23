@@ -1,7 +1,7 @@
 package com.yamangulov.bookshop.controller;
 
-import com.yamangulov.bookshop.data.Document;
-import com.yamangulov.bookshop.data.DocumentService;
+import com.yamangulov.bookshop.data.other.DocumentEntity;
+import com.yamangulov.bookshop.data.other.DocumentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,7 +24,7 @@ public class DocumentsPageController {
     }
 
     @ModelAttribute("documents")
-    public List<Document> documents() {
+    public List<DocumentEntity> documents() {
         return documentService.getDocuments();
     }
 
