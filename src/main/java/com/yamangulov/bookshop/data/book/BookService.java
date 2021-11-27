@@ -1,11 +1,9 @@
-package com.yamangulov.bookshop.data;
+package com.yamangulov.bookshop.data.book;
 
+import com.yamangulov.bookshop.data.author.AuthorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
-import java.sql.ResultSet;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,56 +13,38 @@ import java.util.List;
  */
 @Service
 public class BookService {
-    private final JdbcTemplate jdbcTemplate;
+    private final BookRepository bookRepository;
+    private final AuthorRepository authorRepository;
 
     @Autowired
-    public BookService(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
+    public BookService(BookRepository bookRepository, AuthorRepository authorRepository) {
+        this.bookRepository = bookRepository;
+        this.authorRepository = authorRepository;
     }
 
     public List<Book> getBooksData() {
-        List<Book> books = jdbcTemplate.query("SELECT * FROM books", (ResultSet rs, int rowNum) -> {
-            Book book = new Book();
-            book.setId(rs.getInt("id"));
-            book.setAuthor(rs.getString("author"));
-            book.setTitle(rs.getString("title"));
-            book.setPriceOld(rs.getString("priceOld"));
-            book.setPrice(rs.getString("price"));
-            return book;
-        });
-        return new ArrayList<>(books);
+        // return bookRepository.findAll();
+        // я подготовил 500 книг в БД, но вывод их всех на первую страницу страшно подгружает браузер,
+        // поэтому для удобства я ограничил вывод и здесь тоже, вместо вывода всех книг из БД
+        return bookRepository.findTop20ByOrderById();
     }
 
     // заглушка, которая выводит просто 20 книг из таблицы books, так как изменения в структурах таблиц еще
     // не производились к 4 модулю, предполагаю, что они будут в заданиях к следующим модулям, а здесь
     // достаточно вывести просто любые данные, чтобы показать правильную работу themyleaf на фронте
     public List<Book> getRecentBooks() {
-        List<Book> books = jdbcTemplate.query("SELECT * FROM books LIMIT 20", (ResultSet rs, int rowNum) -> {
-            Book book = new Book();
-            book.setId(rs.getInt("id"));
-            book.setAuthor(rs.getString("author"));
-            book.setTitle(rs.getString("title"));
-            book.setPriceOld(rs.getString("priceOld"));
-            book.setPrice(rs.getString("price"));
-            return book;
-        });
-        return new ArrayList<>(books);
+        return bookRepository.findTop20ByOrderById();
     }
 
     // заглушка, которая выводит просто 20 книг из таблицы books, так как изменения в структурах таблиц еще
     // не производились к 4 модулю, предполагаю, что они будут в заданиях к следующим модулям, а здесь
     // достаточно вывести просто любые данные, чтобы показать правильную работу themyleaf на фронте
     public List<Book> getPopularBooks() {
-        List<Book> books = jdbcTemplate.query("SELECT * FROM books LIMIT 20", (ResultSet rs, int rowNum) -> {
-            Book book = new Book();
-            book.setId(rs.getInt("id"));
-            book.setAuthor(rs.getString("author"));
-            book.setTitle(rs.getString("title"));
-            book.setPriceOld(rs.getString("priceOld"));
-            book.setPrice(rs.getString("price"));
-            return book;
-        });
-        return new ArrayList<>(books);
+        return bookRepository.findTop20ByOrderById();
+    }
+
+    private String getAuthorByAuthorId(int author_id) {
+        return authorRepository.getById(author_id).getAuthor();
     }
 
     public List<Book> getPostponedBooks() {

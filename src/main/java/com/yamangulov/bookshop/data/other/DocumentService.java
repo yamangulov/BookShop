@@ -1,20 +1,27 @@
-package com.yamangulov.bookshop.data;
+package com.yamangulov.bookshop.data.other;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by Andrey.Yamangulov
- * Date: 12.09.2021
- * Time: 12:49
+ * Date: 14.09.2021
+ * Time: 8:00
  */
 @Service
-public class UserService {
+public class DocumentService {
     private final JdbcTemplate jdbcTemplate;
 
     @Autowired
-    public UserService(JdbcTemplate jdbcTemplate) {
+    public DocumentService(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
+    }
+
+
+    public List<DocumentEntity> getDocuments() {
+        return null;
     }
 }

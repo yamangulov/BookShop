@@ -1,7 +1,7 @@
 package com.yamangulov.bookshop.controller;
 
-import com.yamangulov.bookshop.data.Faq;
-import com.yamangulov.bookshop.data.FaqService;
+import com.yamangulov.bookshop.data.other.FaqEntity;
+import com.yamangulov.bookshop.data.other.FaqService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,7 +24,7 @@ public class FaqPageController {
     }
 
     @ModelAttribute("faq")
-    public List<Faq> getFaqs() {
+    public List<FaqEntity> getFaqs() {
         return faqService.getFaqs();
     }
 

@@ -1,26 +1,20 @@
-package com.yamangulov.bookshop.data;
+package com.yamangulov.bookshop.data.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 /**
  * Created by Andrey.Yamangulov
- * Date: 14.09.2021
- * Time: 8:14
+ * Date: 12.09.2021
+ * Time: 12:49
  */
 @Service
-public class FaqService {
+public class UserService {
     private final JdbcTemplate jdbcTemplate;
 
     @Autowired
-    public FaqService(JdbcTemplate jdbcTemplate) {
+    public UserService(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
-    }
-
-    public List<Faq> getFaqs() {
-        return null;
     }
 }

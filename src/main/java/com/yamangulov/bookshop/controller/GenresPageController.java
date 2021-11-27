@@ -1,7 +1,7 @@
 package com.yamangulov.bookshop.controller;
 
-import com.yamangulov.bookshop.data.Genre;
-import com.yamangulov.bookshop.data.GenreService;
+import com.yamangulov.bookshop.data.genre.GenreEntity;
+import com.yamangulov.bookshop.data.genre.GenreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,7 +24,7 @@ public class GenresPageController {
     }
 
     @ModelAttribute("levelZeroGenres")
-    List<Genre> levelZeroGenres() {
+    List<GenreEntity> levelZeroGenres() {
         return genreService.getLevelZeroGenres();
     }
 
